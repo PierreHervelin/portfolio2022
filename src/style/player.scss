@@ -1,0 +1,83 @@
+.player {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%);
+    width: 100%;
+    height: 60px;
+    background-color: #1e2553;
+    @extend %row;
+    justify-content: center;
+    align-items: center;
+
+    .timeline {
+        position: absolute;
+        top: -5px;
+        height: 5px;
+        width: 100%;
+        background-color: #e9e9e9;
+
+        div {
+            height: 100%;
+            width: 100%;
+            transform-origin: left;
+            transform: scaleX(0);
+        }
+    }
+    .container.volume {
+        position: absolute;
+        right: 20px;
+
+        &:hover {
+            .slider {
+                width: 100px;
+                transform: scaleX(1);
+            }
+        }
+
+        .slider {
+            background-color: #e9e9e9;
+            height: 5px;
+            width: 0px;
+            margin: 0;
+            transition: transform ease 0.5s, width ease 0.5s;
+            transform: scaleX(0);
+            transform-origin: left;
+            position: relative;
+
+            div {
+                background-color: #9eb3c2;
+                width: 100%;
+                height: 100%;
+                border-radius: 5px;
+                transform-origin: left;
+                transform: scaleX(0.5);
+            }
+        }
+    }
+
+    .container {
+        @extend %row;
+        align-items: center;
+
+        & > div {
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
+            margin-inline: 5px;
+            position: relative;
+            transition: background-color ease 0.5s;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #2c3679;
+            }
+
+            svg {
+                @extend %mid;
+                font-size: 20px;
+                color: white;
+            }
+        }
+    }
+}

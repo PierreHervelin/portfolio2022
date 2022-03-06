@@ -27,6 +27,17 @@
     &.active {
         .active-back {
             transform: scaleX(1);
+            transition: transform ease 0.8s 0.1s;
+            &::before,
+            &::after {
+                transform: scaleX(1);
+            }
+            &::after {
+                transition: transform ease 0.8s 0.2s;
+            }
+            &::before {
+                transition: transform ease 0.8s;
+            }
         }
         .header.container {
             svg {
@@ -44,14 +55,23 @@
         }
     }
 
+    .nav-back {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: #21295c;
+    }
+
     .active-back {
         position: absolute;
         top: 0;
         left: 0;
         width: 20vw;
         height: 100%;
-        background-color: #21295c;
-        transition: transform ease 0.8s;
+        background-color: #065a82;
+        transition: transform ease 0.8s 0.1s;
         transform: scaleX(0);
         transform-origin: left;
 
@@ -60,6 +80,27 @@
         }
         @media (max-width: 720px) {
             width: 100vw;
+        }
+
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transform: scaleX(0);
+            transform-origin: left;
+        }
+        &::after {
+            transition: transform ease 0.8s;
+            background-color: #21295c;
+        }
+        &::before {
+            transition: transform ease 0.8s 0.2s;
+            background-color: #9eb3c2;
+            z-index: -1;
         }
     }
 
@@ -129,6 +170,7 @@
                 top: 50%;
                 color: white;
                 opacity: 0;
+                padding-block: 15px;
                 transform: translate(0, -50%);
                 transition: opacity ease 0.5s;
             }

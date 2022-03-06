@@ -1,0 +1,12 @@
+.page {
+    margin-top: 20px;
+    @extend %col;
+    justify-content: flex-start;
+    align-items: center;
+
+    h1 {
+        font-family: 'medium';
+        font-weight: normal;
+        font-size: 45px;
+    }
+}

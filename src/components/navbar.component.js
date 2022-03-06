@@ -10,7 +10,7 @@ const NavbarComponent = () => {
     const navigate = useNavigate();
 
     const useOutside = (e) => {
-        if (!navbarRef.current.contains(e.target)) {
+        if (navbarRef.current && !navbarRef.current.contains(e.target)) {
             setActive(false);
         }
     };
@@ -44,27 +44,28 @@ const NavbarComponent = () => {
             className={`navbar ${active ? 'active' : ''} ${loaded ? 'loaded' : ''}`}
         >
             <div className="active-back"></div>
+            <div className="nav-back"></div>
             <div className="container header" onClick={() => setActive(!active)}>
                 <FiList />
             </div>
             <div className="container">
-                <div title="profile" onClick={() => navigate('/')}>
+                <div onClick={() => navigate('/')}>
                     <FiUser />
                     <span>Profile</span>
                 </div>
-                <div title="projects">
+                <div>
                     <FiCode />
                     <span>Projects</span>
                 </div>
-                <div title="music" onClick={() => navigate('/music')}>
+                <div onClick={() => navigate('/music')}>
                     <FiHeadphones />
                     <span>Music</span>
                 </div>
-                <div title="github">
+                <div>
                     <FiGithub />
                     <span>Github</span>
                 </div>
-                <div title="linkedin">
+                <div>
                     <FiLinkedin />
                     <span>Linkedin</span>
                 </div>
